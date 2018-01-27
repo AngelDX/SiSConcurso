@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-01-2018 a las 15:46:15
+-- Tiempo de generación: 27-01-2018 a las 15:58:20
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.21
 
@@ -43,7 +43,9 @@ INSERT INTO `acceso` (`id`, `usuario_id`, `tipo_acceso`, `ip`, `acceso_at`) VALU
 (2, 2, 2, '127.0.0.1', '2018-01-27 07:38:10'),
 (3, 2, 1, '127.0.0.1', '2018-01-27 07:38:17'),
 (4, 2, 1, '127.0.0.1', '2018-01-27 09:11:03'),
-(5, 2, 1, '127.0.0.1', '2018-01-27 09:42:37');
+(5, 2, 1, '127.0.0.1', '2018-01-27 09:42:37'),
+(6, 2, 2, '127.0.0.1', '2018-01-27 09:48:23'),
+(7, 2, 1, '127.0.0.1', '2018-01-27 09:50:15');
 
 -- --------------------------------------------------------
 
@@ -262,7 +264,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `login`, `password`, `perfil_id`, `email`, `tema`, `app_ajax`, `datagrid`, `fotografia`, `pool`, `usuario_at`, `usuario_in`) VALUES
 (1, 'Cronjob', 'System', 'cronjob', '963db57a0088931e0e3627b1e73e6eb5', 1, NULL, 'default', 1, 30, 'default.png', NULL, '2013-01-01 00:00:01', NULL),
-(2, 'Angel  Rosendo', 'Condori Coaquira', 'admin', '5d8e90bf3b8dd93d3e18f9a6a60c937a02a82721', 1, 'angel.condori@gmail.com', 'default', 1, 30, 'default.png', NULL, '2013-01-01 00:00:01', '2018-01-27 09:45:44');
+(2, 'Angel  Rosendo', 'Condori Coaquira', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1, 'angel.condori@gmail.com', 'default', 1, 30, 'default.png', NULL, '2013-01-01 00:00:01', '2018-01-27 09:45:44');
 
 -- --------------------------------------------------------
 
@@ -273,6 +275,7 @@ INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `login`, `password`, `perfil_
 CREATE TABLE `xcalificacion` (
   `id` int(10) NOT NULL,
   `elenco_id` int(10) NOT NULL,
+  `evento_id` int(10) NOT NULL,
   `jurado` varchar(50) NOT NULL,
   `puntaje` double(10,2) NOT NULL,
   `condicion` varchar(10) NOT NULL,
@@ -427,7 +430,7 @@ ALTER TABLE `xevento`
 -- AUTO_INCREMENT de la tabla `acceso`
 --
 ALTER TABLE `acceso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador del acceso', AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador del acceso', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `backup`
 --
