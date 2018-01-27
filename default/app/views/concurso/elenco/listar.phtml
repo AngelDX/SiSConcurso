@@ -1,0 +1,51 @@
+<?php View::flash(); ?>
+<script type="text/javascript">
+    $(function() {
+        $('table').kgrid({
+            form_to         : $.KumbiaPHP.publicPath+'concurso/elenco/buscar/',            
+            order_attr      : '<?php echo (APP_AJAX) ? 'class="js-link js-spinner"' : ''; ?>',
+            order_to        : $.KumbiaPHP.publicPath+'concurso/elenco/listar/'
+        });
+    });
+</script>
+
+<div class="container shell-view">
+    <?php View::process($page_module, $page_title, $set_title); ?>
+    <div class="btn-toolbar btn-toolbar-top">
+        <div class="row">
+            <div class="btn-actions">
+                <?php echo DwHtml::button("concurso/elenco/agregar/", 'agregar', NULL, 'fa-check-square-o', APP_AJAX); ?>
+            </div>            
+        </div>
+    </div>
+    <div class="container-overflow">
+        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th>NUM</th>
+                    <th class="col-hidden" data-search="login" data-order="login">CONJUNTO</th>
+                    <th class="col-hidden" data-search="nombre" data-order="nombre">REPRESENTANTE</th>
+                    <th class="col-hidden" data-search="apellido" data-order="apellido">NUM CONTACTO</th>
+                    <th class="col-blocked text-center">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($elencos->items as $data): ?>
+                    <tr>
+                        <td><?php echo $elencos->counter; ?></td>
+                        <td><?php echo $data->nombre; ?></td>
+                        <td><?php echo $data->representante; ?></td>
+                        <td><?php echo $data->numcontacto; ?></td>
+                        <td>
+                            <?php echo DwHtml::buttonTable('Modificar perfil', "concurso/elenco/editar/$data->id/", null, 'warning', 'fa-edit'); ?>
+                            <?php echo DwHtml::buttonTable('Eliminar menú', "concurso/elenco/eliminar/$data->id/", array('class'=>'js-confirm', 'confirm-title'=>'Eliminar registro', 'confirm-body'=>'Está seguro de eliminar este registro? <br />Recuerda que esta operación no se puede reversar.'), 'danger', 'fa-ban'); ?>
+                        </td>
+                    </tr>
+                    <?php $elencos->counter++; ?>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    </div>
+    <?php View::partial('paginators/default', false, array('page'=>$elencos, 'url'=>"sistema/usuarios/listar/$order/")); ?>
+</div>

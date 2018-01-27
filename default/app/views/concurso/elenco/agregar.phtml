@@ -1,0 +1,30 @@
+<?php View::flash(); ?>
+<div class="container shell-view">
+    <?php View::process($page_module, $page_title, $set_title); ?>
+    <?php echo DwForm::open(); ?>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::text('elenco.nombre', array('class'=>'input-lower input-required'), NULL, 'Nombre elenco'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::text('elenco.representante', array('class'=>'input-lower'), NULL, 'Representante'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::text('elenco.numcontacto', array('class'=>'input-lower'), NULL, 'Numero de contacto'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-actions">
+                <?php echo DwForm::send('Guardar menú'); ?>
+                <?php echo DwForm::cancel(); ?>
+                <?php echo DwForm::focus('tipo.descripcion'); ?>
+            </div>
+        </div>
+
+    <?php echo DwForm::close(); ?>
+
+</div>
