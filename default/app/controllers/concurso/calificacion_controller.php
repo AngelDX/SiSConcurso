@@ -13,8 +13,8 @@ class CalificacionController extends BackendController{
 
     public function listar($order='order.id.asc', $page='page.1') { 
         $page = (Filter::get($page, 'page') > 0) ? Filter::get($page, 'page') : 1;
-        $elenco = new Xcalificacion();
-        $this->elencos=$elenco->getListado($order, $page);
+        $calificacion = new Xcalificacion();
+        $this->calificaciones=$calificacion->getListado($order, $page);
         $this->order = $order;        
         $this->page_title = 'Listado de elencos';
     }

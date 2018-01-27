@@ -1,0 +1,35 @@
+<?php View::flash(); ?>
+<div class="container shell-view">
+    <?php View::process($page_module, $page_title, $set_title); ?>
+    <?php echo DwForm::open(); ?>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::dbSelect('calificacion.elenco_id', 'nombre', array('concurso/xelenco', 'getListado'),'Seleccione',array('class'=>'input-required'), NULL, 'Elencos'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::dbSelect('calificacion.evento_id', 'nombre', array('concurso/xevento', 'getListado'),'Seleccione',array('class'=>'input-required'), NULL, 'Eventos'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::text('elenco.numcontacto', array('class'=>'input-lower'), NULL, 'Nombre Jurado'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo DwForm::text('elenco.numcontacto', array('class'=>'input-lower'), NULL, 'Puntaje'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-actions">
+                <?php echo DwForm::send('Guardar menú'); ?>
+                <?php echo DwForm::cancel(); ?>
+                <?php echo DwForm::focus('tipo.descripcion'); ?>
+            </div>
+        </div>
+
+    <?php echo DwForm::close(); ?>
+
+</div>

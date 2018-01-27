@@ -1,12 +1,12 @@
 <?php
 
-class Xcalificacion extends ActiveRecord {
+class Xevento extends ActiveRecord {
 
 	public function getListado($order='', $page=0) {        
         $order = $this->get_order($order, 'id', array(            
-            'jurado' => array(
-                'ASC' => 'jurado ASC',
-                'DESC' => 'jurado DESC'
+            'nombre' => array(
+                'ASC' => 'nombre ASC',
+                'DESC' => 'nombre DESC'
             )
         ));
          if($page) {

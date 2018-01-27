@@ -1,0 +1,435 @@
+[Sat, 27 Jan 18 07:21:56 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 07:21:56 -0500][ERROR] No database selected al ejecutar <em>"DESCRIBE `menu`"</em>
+[Sat, 27 Jan 18 07:32:33 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 07:32:33 -0500][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 07:32:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','127.0.0.1','2018-01-27 7:32:52')
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 1 LIMIT 1
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:32:52 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 07:33:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:33:02 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 07:33:02 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 07:33:12 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:33:57 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:33:59 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:34:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:34:02 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 07:34:02 -0500][DEBUG] SELECT COUNT(*) FROM acceso  INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1'
+[Sat, 27 Jan 18 07:34:02 -0500][DEBUG] SELECT acceso.*, usuario.login, usuario.nombre, usuario.apellido FROM acceso INNER JOIN usuario ON usuario.id = acceso.usuario_id  WHERE usuario.id > '1' ORDER BY acceso.acceso_at DESC, usuario.nombre ASC, usuario.apellido ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 07:34:04 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:34:04 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 07:34:04 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 07:34:04 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 07:34:04 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 07:34:05 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:34:06 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 07:34:06 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 07:38:10 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:38:10 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 07:38:10 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','127.0.0.1','2018-01-27 7:38:10')
+[Sat, 27 Jan 18 07:38:10 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 2 LIMIT 1
+[Sat, 27 Jan 18 07:38:10 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '71e0b9864bbdf9524678b3644dade94721db1227' LIMIT 1
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','127.0.0.1','2018-01-27 7:38:17')
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 3 LIMIT 1
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 07:38:17 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:18:44 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:18:48 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:19:49 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:19:49 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:20:05 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:20:05 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:20:05 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:20:05 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:20:05 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:20:42 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:20:42 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:20:42 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE recurso_id='' AND visibilidad=1 LIMIT 1
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] INSERT INTO menu (menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom) VALUES (NULL,NULL,'Concurso','#','1000','fa-university','1','1','0')
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 15 LIMIT 1
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:21:38 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:21:44 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:21:44 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:21:44 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE recurso_id='15' AND visibilidad=1 LIMIT 1
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] INSERT INTO menu (menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom) VALUES ('15','15','Elencos','concurso/elenco/','1','fa-users','1','1','0')
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 16 LIMIT 1
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:22:20 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:22:22 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:22:22 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:22:22 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:22:22 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:22:22 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:24:50 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:30:57 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:30:57 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:30:57 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:30:57 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:31:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:30 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:31:30 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:31:32 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:32 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:31:32 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:31:56 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:56 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:31:56 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:31:57 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:57 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:31:57 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:31:58 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:31:59 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Sat, 27 Jan 18 08:32:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:32:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:32:02 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:32:02 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:32:26 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:32:26 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:32:26 -0500][DEBUG] SELECT COUNT(*) FROM usuario  INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1
+[Sat, 27 Jan 18 08:32:26 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.perfil_id != 1 ORDER BY nombre ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:39:31 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:39:31 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:39:31 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:39:31 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:39:31 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id  ASC LIMIT 30 OFFSET -30
+[Sat, 27 Jan 18 08:39:31 -0500][ERROR] You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-30' at line 1 al ejecutar <em>"SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id  ASC LIMIT 30 OFFSET -30"</em>
+[Sat, 27 Jan 18 08:44:00 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:44:00 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:44:00 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:44:00 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:44:00 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:48:42 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:48:42 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:48:42 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:48:42 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:48:42 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:50:09 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:50:09 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:50:09 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:50:09 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:50:09 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:50:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:50:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:50:46 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:50:46 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:50:46 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:50:47 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:51:23 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:53:40 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:53:40 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:53:40 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:53:40 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:53:40 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:53:41 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:54:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:54:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:54:02 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:54:02 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:54:02 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:54:05 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:54:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:54:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:54:46 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:54:46 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:54:46 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:54:48 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:57:22 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:57:22 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:57:22 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:57:22 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:57:22 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:57:24 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco WHERE nombre='asd' LIMIT 1
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] INSERT INTO xelenco (nombre,representante,numcontanto) VALUES ('asd','wwww',NULL)
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco WHERE id = 0 LIMIT 1
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:57:30 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:58:19 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:58:20 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:58:20 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:58:20 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:58:20 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:58:43 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:58:43 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:58:43 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:58:43 -0500][DEBUG] SELECT id,nombre,representante,numcontanto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:58:43 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 08:59:58 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 08:59:59 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 08:59:59 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 08:59:59 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 08:59:59 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:00:01 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:01 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:01 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:00:01 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:00:01 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:00:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco WHERE nombre='qwewqe' LIMIT 1
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] INSERT INTO xelenco (nombre,representante,numcontacto) VALUES ('qwewqe','ddddd','4444')
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco WHERE id = 1 LIMIT 1
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:00:07 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:00:25 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:25 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:00:25 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:00:25 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:00:25 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:00:29 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco WHERE nombre='ertretret' LIMIT 1
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] INSERT INTO xelenco (nombre,representante,numcontacto) VALUES ('ertretret','dsdsssss','555')
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco WHERE id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:00:36 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:00:37 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:00:37 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:01:35 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:01:35 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:01:35 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:01:35 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:01:35 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:01:37 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:01:37 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:01:37 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:01:37 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:01:37 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:01:43 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:01:47 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:01:47 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:01:47 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:01:47 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:01:47 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:10:55 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:10:55 -0500][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:10:57 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:11:02 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:11:02 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '71e0b9864bbdf9524678b3644dade94721db1227' LIMIT 1
+[Sat, 27 Jan 18 09:11:02 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Sat, 27 Jan 18 09:11:02 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 09:11:03 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','127.0.0.1','2018-01-27 9:11:03')
+[Sat, 27 Jan 18 09:11:03 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 4 LIMIT 1
+[Sat, 27 Jan 18 09:11:03 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:11:03 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:11:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:11:30 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:12:08 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:12:10 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:12:10 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:12:10 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:12:10 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:12:10 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:14:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:14:40 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:15:10 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:15:10 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:16:12 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:16:12 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:16:12 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:16:12 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:16:12 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:16:21 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:16:21 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:16:21 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.id IS NOT NULL AND menu.activo=1 ORDER BY padre_posicion  ASC
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE recurso_id='16' AND visibilidad=1 LIMIT 1
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] INSERT INTO menu (menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom) VALUES ('15','16','Calificación','concurso/calificacion/','2','fa-sort-amount-asc','1','1','0')
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE id = 17 LIMIT 1
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:18:09 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:18:12 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:18:12 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:18:12 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 1 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:18:12 -0500][DEBUG] SELECT id,menu_id,recurso_id,menu,url,posicion,icono,activo,visibilidad,custom FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:18:12 -0500][DEBUG] SELECT menu.*, (padre.menu) AS padre, (padre.posicion) AS padre_posicion, recurso.recurso FROM menu LEFT JOIN recurso ON recurso.id = menu.recurso_id LEFT JOIN menu AS padre ON padre.id = menu.menu_id  WHERE menu.menu_id = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:42:24 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:42:25 -0500][DEBUG] SELECT menu.* FROM menu WHERE menu.menu_id IS NULL AND menu.visibilidad = 2 AND menu.activo = 1 GROUP BY menu.id ORDER BY menu.posicion ASC
+[Sat, 27 Jan 18 09:42:27 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '71e0b9864bbdf9524678b3644dade94721db1227' LIMIT 1
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','127.0.0.1','2018-01-27 9:42:37')
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 5 LIMIT 1
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:42:37 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:42:47 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:42:47 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] SELECT COUNT(*) FROM usuario WHERE  id = '2'
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] SELECT COUNT(*) FROM usuario WHERE  id = '2'
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] SELECT COUNT(*) FROM usuario  WHERE login = 'admin' AND id != 2
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] SELECT COUNT(*) FROM usuario  WHERE email = 'angel.condori@gmail.com' AND id != 2
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] UPDATE usuario SET nombre = 'Angel  Rosendo',apellido = 'Condori Coaquira',login = 'admin',password = '5d8e90bf3b8dd93d3e18f9a6a60c937a02a82721',perfil_id = '1',email = 'angel.condori@gmail.com',tema = 'default',app_ajax = '1',datagrid = '30',fotografia = 'default.png',usuario_in = '2018-01-27 9:45:44' WHERE  id = '2'
+[Sat, 27 Jan 18 09:47:48 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:47:48 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:47:48 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:47:54 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:47:57 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:47:57 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:48:15 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:48:15 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario, estado_usuario.descripcion FROM usuario INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id INNER JOIN perfil ON perfil.id = usuario.perfil_id  WHERE usuario.id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:48:15 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE id = 2 LIMIT 1
+[Sat, 27 Jan 18 09:48:23 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:48:23 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 09:48:23 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','2','127.0.0.1','2018-01-27 9:48:23')
+[Sat, 27 Jan 18 09:48:23 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 6 LIMIT 1
+[Sat, 27 Jan 18 09:48:23 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:48:26 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:48:26 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = 'fb322f9034a7f4471e623282aba2c6739d343c13' LIMIT 1
+[Sat, 27 Jan 18 09:48:26 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:48:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:48:30 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '71e0b9864bbdf9524678b3644dade94721db1227' LIMIT 1
+[Sat, 27 Jan 18 09:48:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:12 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:12 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '71e0b9864bbdf9524678b3644dade94721db1227' LIMIT 1
+[Sat, 27 Jan 18 09:50:12 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] SELECT id,nombre,apellido,login,password,perfil_id,email,tema,app_ajax,datagrid,fotografia,pool,usuario_at,usuario_in FROM usuario WHERE login = 'admin' AND password = '7c4a8d09ca3762af61e59520943dc26494f8941b' LIMIT 1
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] SELECT usuario.*, perfil.perfil, estado_usuario.estado_usuario FROM usuario INNER JOIN perfil ON perfil.id = usuario.perfil_id INNER JOIN (SELECT usuario_id, estado_usuario, descripcion, estado_usuario_at FROM (SELECT * FROM estado_usuario ORDER BY estado_usuario.id DESC ) AS estado_usuario GROUP BY estado_usuario.usuario_id ) AS estado_usuario ON estado_usuario.usuario_id = usuario.id  WHERE usuario.id = '2' LIMIT 1
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] DESCRIBE `acceso`
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] INSERT INTO acceso (usuario_id,tipo_acceso,ip,acceso_at) VALUES ('2','1','127.0.0.1','2018-01-27 9:50:15')
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] SELECT id,usuario_id,tipo_acceso,ip,acceso_at FROM acceso WHERE id = 7 LIMIT 1
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:15 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 09:50:36 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:36 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:50:36 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:50:36 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:50:36 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:56:51 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:56:51 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:57:19 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:57:20 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:57:20 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 09:57:20 -0500][DEBUG] SELECT COUNT(*) FROM xelenco 
+[Sat, 27 Jan 18 09:57:20 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:57:20 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:57:20 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:58:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:58:46 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:58:46 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 09:58:46 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 09:58:46 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 09:59:49 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:59:49 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 09:59:49 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 09:59:49 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 09:59:49 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:03:22 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:03:22 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:03:22 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:03:22 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:03:22 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:04:33 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:04:33 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:04:33 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:04:33 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:04:33 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:04:53 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:04:53 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:04:53 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:04:53 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:04:53 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:05:15 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:05:15 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:05:15 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:05:15 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:05:15 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:05:54 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:05:54 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:05:54 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:05:54 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:05:54 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:12:16 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:12:17 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:12:17 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:12:17 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:12:17 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:12:18 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:12:40 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:12:40 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:12:40 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:12:40 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:12:40 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:12:42 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:12:42 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 10:12:42 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:13:13 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:13:13 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 10:13:13 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:13:13 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:14:00 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:14:00 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:14:00 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:14:00 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:14:00 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:14:05 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:14:05 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 10:14:05 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:14:19 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:14:19 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 10:14:19 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:14:19 -0500][DEBUG] DESCRIBE `xevento`
+[Sat, 27 Jan 18 10:14:19 -0500][DEBUG] SELECT id,nombre,descripcion,lugar,fecha FROM xevento ORDER BY id  ASC
+[Sat, 27 Jan 18 10:14:19 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 10:14:47 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:14:47 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 10:14:47 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:14:47 -0500][DEBUG] DESCRIBE `xevento`
+[Sat, 27 Jan 18 10:14:47 -0500][DEBUG] SELECT id,nombre,descripcion,lugar,fecha FROM xevento ORDER BY id  ASC
+[Sat, 27 Jan 18 10:14:47 -0500][DEBUG] DESCRIBE `menu`
+[Sat, 27 Jan 18 10:16:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:16:30 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:16:30 -0500][DEBUG] DESCRIBE `xcalificacion`
+[Sat, 27 Jan 18 10:16:30 -0500][DEBUG] SELECT COUNT(*) FROM xcalificacion 
+[Sat, 27 Jan 18 10:16:30 -0500][DEBUG] SELECT id,elenco_id,evento_id,jurado,puntaje,condicion,calificacion_in,calificacion_at FROM xcalificacion ORDER BY id ASC LIMIT 30 OFFSET 0
+[Sat, 27 Jan 18 10:16:31 -0500][DEBUG] DESCRIBE `usuario`
+[Sat, 27 Jan 18 10:16:31 -0500][DEBUG] DESCRIBE `xelenco`
+[Sat, 27 Jan 18 10:16:31 -0500][DEBUG] SELECT id,nombre,representante,numcontacto FROM xelenco ORDER BY id  ASC
+[Sat, 27 Jan 18 10:16:31 -0500][DEBUG] DESCRIBE `xevento`
+[Sat, 27 Jan 18 10:16:31 -0500][DEBUG] SELECT id,nombre,descripcion,lugar,fecha FROM xevento ORDER BY id  ASC

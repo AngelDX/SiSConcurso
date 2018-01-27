@@ -1,0 +1,1 @@
+[Sat, 27 Jan 18 09:45:44 -0500][DEBUG] [/sistema/mi_cuenta/index/][admin][127.0.0.1] Se ha modificado la información del usuario admin.
